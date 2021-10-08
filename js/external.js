@@ -15,7 +15,7 @@ var brotherBear = prompt("How many days would you like to rent Brother Bear for?
 var herculesMovie = prompt("How many days would you like to rent Hercules for?");
 var rentalRate = prompt("Uhh, how much was the day rate on these movies again?");
 
-alert("Our current rental rate is "+ rentalRate + " dollars. Your total for today will be " +((Number (littleMermaid)+ Number(brotherBear)+ Number(herculesMovie)) * 3 ) + " dollars!");
+alert("Our current rental rate is "+ rentalRate + " dollars. Your total for today will be " +((Number (littleMermaid)+ Number(brotherBear)+ Number(herculesMovie)) * Number(rentalRate) ) + " dollars!");
 
 //Exercise 3.2
 // Suppose you're working as a contractor for 3 companies: Google, Amazon and Facebook, they pay you a different rate per hour.
