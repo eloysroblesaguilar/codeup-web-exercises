@@ -22,7 +22,7 @@ if (bothSocksFirst) {
     alert("Weirdo.....");
 }
 
-var leastFavoriteSoda = prompt("What is ytour least favorite soda?");
-var favoriteSoda = prompt("What's your favorite soda?");
+var leastFavoriteSoda = prompt("What is your least favorite soda?");
+var favoriteSoda = prompt("What is your favorite soda?");
 
-alert("Hello fellow teens, my name is " + leastFavoriteSoda+ " " + favoriteSoda + " and I choose hugs, not drugs.");
+alert("Hello fellow teens! My name is " + leastFavoriteSoda+ " " + favoriteSoda + " and I choose hugs, not drugs.");
