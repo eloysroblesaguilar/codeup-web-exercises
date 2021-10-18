@@ -109,6 +109,8 @@ switch (color) {
  * function to show it to the user.
  */
 
+
+
 /* ########################################################################## */
 
     /**
@@ -195,7 +197,7 @@ if (wouldLike === true) {
 console.log(magicNumber);
 console.log(typeof magicNumber == 'number');
 
-/** second failed solution ;-; **/
+/** second failed solution ;-;  **/
     if (isNaN(magicNumber) === false) {
         if (magicNumber % 2 == 0) {
             alert("Your number is even!");
