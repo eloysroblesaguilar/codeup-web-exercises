@@ -3,7 +3,7 @@
 
     var userNumber = parseInt(prompt("Please enter an odd number between 1 and 50"));
 
-    while (userNumber % 2 === 0 || (50 < userNumber) ) {
+    while (userNumber % 2 === 0 || (50 < userNumber) || (userNumber < 1 ) ) {
         alert("That is not an odd number between 1 and 50!")
         userNumber = parseInt(prompt("Please enter an odd number between 1 and 50"));
     }

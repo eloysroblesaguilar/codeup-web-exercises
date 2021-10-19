@@ -1,9 +1,9 @@
 (function (){
-//
-//     var n = 1
-//     while (n < 65536){
-//         console.log(n *= 2);
-//     }
+
+    var n = 1
+    while (n < 65536){
+        console.log(n *= 2);
+    }
 
 /**
 An ice cream seller can't go home until she sells all of her cones. First write enough code that generates a
