@@ -50,17 +50,21 @@ person.sayHello = function () {
         {name: 'George', amount: 320}
     ];
 
-       shoppers.forEach(function (shopper) {
-           if (shopper.amount > 200) {
-               console.log('Hello ' + shopper.name + '.');
-               console.log(shopper.amount + ' is your total before discount!');
-               console.log(((shopper.amount) - (shopper.amount * .12) ) + ' is your total after discount!');
-           } else {
-               console.log('Hello ' + shopper.name + '.');
-               console.log(shopper.amount + ' is your total. You don\'t get a discount!');
-           }
-       })
+    function discountCalculator (arr) {
+        arr.forEach(function (shopper) {
+            if (shopper.amount > 200) {
+                console.log('Hello ' + shopper.name + '.');
+                console.log(shopper.amount + ' is your total before discount!');
+                console.log((shopper.amount * .12) + ' is your discount!');
+                console.log(((shopper.amount) - (shopper.amount * .12)) + ' is your total after discount!');
+            } else {
+                console.log('Hello ' + shopper.name + '.');
+                console.log(shopper.amount + ' is your total. You don\'t get a discount!');
+            }
+        })
+    }
 
+    discountCalculator(shoppers);
     /** TODO:
      * Create an array of objects that represent books and store it in a
      * variable named `books`. Each object should have a title and an author
@@ -139,12 +143,17 @@ console.log(books);
      *      ---
      *      ...
      */
+
     books.forEach(function (book){
         console.log( "Book #" + (books.indexOf(book) + 1));
         console.log("Title: " + book.title);
         console.log("Author: " + book.author.firstName + " " + book.author.lastName);
         console.log( "---");
     })
+
+    // books.forEach(function (book){
+    //     showBookInfo();
+    // })
 
     /**
      * Bonus:
@@ -166,14 +175,17 @@ function createBook (title, authorName) {
         }
     }
         books.push(newBook)
-        return console.log(newBook) ;
+        console.log(books[books.length-1]) ;
 }
 
 createBook("The Salmon of Doubt", "Douglas Adams" );
 
 function showBookInfo (book) {
-
+    console.log( "Book #" + (books.indexOf(book) + 1));
+    console.log("Title: " + book.title);
+    console.log("Author: " + book.author.firstName + " " + book.author.lastName)
+    console.log( "---")
 }
-
+showBookInfo(gameOfThrones);
 
 })();
