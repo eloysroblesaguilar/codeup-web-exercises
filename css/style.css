@@ -1,5 +1,47 @@
 
-.fancy-header {
-    color: mediumpurple; /* single line comment */
+h1 {
+    color: #706C61; /* single line comment */
     text-decoration: underline;
+}
+
+h2 {
+    color: #899E8B;
+    text-decoration: underline;
+}
+
+body {
+    background-color: #f1eee8;
+    background-image: url("../img/Andras+Arato.001.jpeg");
+    background-position-x: right;
+    font-family: "JetBrains Mono";
+}
+
+ul {
+    list-style-type: square;
+}
+
+ol {
+    list-style-type: lower-roman;
+}
+
+th, td {
+    border-bottom: 1px solid #ddd;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+a:link{
+    color: #EEFC57;
+}
+a:visited{
+    color: #5E5B52;
+}
+a:hover{
+    color: #DF9A57;
+}
+
+a:active{
+    color: #FC7A57;
 }
