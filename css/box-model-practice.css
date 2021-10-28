@@ -1,0 +1,32 @@
+.recipe1 {
+    background-color: #bd8e66;
+    height: fit-content;
+    width: calc(100% - 20px);
+    padding: 10px;
+    border-radius: 2%;
+   margin: 2px auto;
+}
+
+.recipe2 {
+    background-color: #899E8B;
+    height: fit-content;
+    width: calc(100% - 20px);
+    padding: 10px;
+    border-radius: 2%;
+    margin: 2px auto;
+}
+
+.container {
+    border: 2px solid #5E5B52;                      /* size, style, color */
+    width: 35%;
+    margin: 10px auto;
+}
+
+.header {
+    background-color: #d7bc51;
+    height: fit-content;
+    width: calc(100% - 20px);
+    padding: 10px;
+    border-radius: 2%;
+    margin: 2px auto;
+}
