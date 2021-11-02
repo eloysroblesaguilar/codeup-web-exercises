@@ -148,3 +148,10 @@ section:nth-of-type(6) {
 .grey-box:nth-of-type(odd) {
     height: 4em;
 }
+
+/*
+display: flex;
+flex-direction: row;
+is not needed for every section since the main section selector
+was already giving me those properties
+*/
