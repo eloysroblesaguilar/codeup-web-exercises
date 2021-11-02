@@ -1,0 +1,42 @@
+* {
+    box-sizing: border-box;
+}
+body {
+    margin: 0;
+}
+nav {
+    background: lightgrey;
+}
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+}
+
+nav a {
+    text-decoration: none;
+    color: #000000;
+    font-family: Verdana;
+    display: inline-block;
+    padding: 1em;
+    margin: auto;
+}
+nav a:hover {
+    color: #434fb5;
+}
+
+.logo {
+    font-size: 3em;
+    padding-top: .2em;
+    padding-bottom: .2em;
+    justify-self: center;
+}
+.section {
+    justify-self: flex-start;
+}
+
+.navStuff {
+    justify-self: flex-end;
+}
