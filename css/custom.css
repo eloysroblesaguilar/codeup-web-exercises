@@ -1,0 +1,24 @@
+.jumbotron-custom {
+    background-image: url("/img/pizza.png");
+    padding-left: 0;
+    padding-right: 0;
+    text-align: center;
+}
+
+.cool-header {
+    background-color: white;
+    opacity: 0.6;
+}
+
+a:hover {
+    color: #181819;
+}
+
+.grey-text {
+    color: #7e7e7f; !important;
+
+}
+.grey-border {
+    border: #7e7e7f 1px solid;
+}
+
