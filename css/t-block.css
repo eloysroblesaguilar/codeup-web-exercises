@@ -16,11 +16,15 @@ h3 {
 
 #contacts {
     margin-top: 15px;
-    margin-bottom: 0px;
+    /*margin-bottom: 15px;*/
     text-align: center;
-    border-bottom: 5px solid #3C4367 ;
-}
+    /*border-bottom: 5px solid #3C4367;*/
 
+}
+#header {
+    border-bottom: 5px solid #3C4367;
+
+}
 @media (min-width: 768px) {
 
     #smallcolumn {
