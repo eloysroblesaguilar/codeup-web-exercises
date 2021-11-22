@@ -23,7 +23,7 @@ $(document).ready(function() {
     // })
 h1.click(function (e){
     h1.css({
-        'background-color' : 'yellow'
+        'background-color' : '#ffe66d'
     })
 });
 var p = $('p');
@@ -38,7 +38,7 @@ var li = $('li');
 
 li.hover(
     function (){
-        li.css('color','red');
+        li.css('color','#e3655b');
     },
     function (){
         li.css('color','black')

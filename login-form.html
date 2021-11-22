@@ -17,9 +17,43 @@
                 <label for="password" class="form-label">Password</label>
                 <input type="password" id="password" name="password" class="form-control">
             </div>
-            <button class="btn btn-block">Login</button>
+            <button class="btn btn-block" type="submit" id="submit">Login</button>
         </fieldset>
     </form>
+    <div class="width-80" id="div">
+
+    </div>
 </main>
+<script>
+    // You are in charge of adding form validation for the login page for a contract position. Navigate to your login-form.html file in codeup-web-exercises,
+    //     write your code in an inline script.
+    //
+    //     Below is the username and password we would like you to test with.
+    //
+    // Var username = "regulus2021"
+    // Var password = "gocodeup"
+    //
+    //
+    // If the user enters in the wrong username or password, add a small text element under the password input field that reads
+    // "We're sorry, your username or password is incorrect. Please try again."
+    // This string should also be red.
+    // var username = document.querySelector('#username').value;
+    // var password = document.querySelector('#password').value;
+    var submit = document.querySelector('#submit');
+    var div = document.querySelector('#div')
+    submit.addEventListener('click', function (e){
+        e.preventDefault();
+        var username = document.querySelector('#username').value;
+        var password = document.querySelector('#password').value;
+        console.log(username);
+        console.log(password);
+        if (username == "regulus2021" && password == "gocodeup" ) {
+            alert('You have logged in');
+        } else {
+            div.innerHTML = ("We're sorry, your username or password is incorrect. Please try again.");
+            div.style.color = 'red';
+        }
+    })
+</script>
 </body>
 </html>

@@ -1,0 +1,12 @@
+.cooldiv {
+    background-color: #0fb784;
+    margin: 0 auto;
+    width: 500px;
+    height: 500px;
+    color: #434fb5;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+h1{
+    text-align: center;
+}
