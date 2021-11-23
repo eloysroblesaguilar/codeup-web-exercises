@@ -1,22 +1,22 @@
-$(document).keyup(function (event){
-    console.log(event.keyCode);
-})
+// $(document).keyup(function (event){
+//     console.log(event.keyCode);
+// })
 // left arrow keycode 37, up arrow keycode 38, right arrow keycode 39,
 // down arrow keycode 40, a keycode 65, b keycode 66, return keycode 13
 
-var konamiCodeIterator = 0;
-var regulusCodeIterator = 0;
+var konamiCodeCounter = 0;
+var regulusCodeCounter = 0;
 var div = $('div');
 var konamiCode = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65, 13];
-var regulusCode = [82, 69, 71, 85, 76, 85, 83];
+var regulusCode = [82, 69, 71, 85, 76, 85, 83]; //keycodes for regulus
 
 
-
+//KONAMI CODE EVENT
 $(document).keyup(function (event) {
-    console.log(konamiCodeIterator);
-    if (event.keyCode === konamiCode[konamiCodeIterator]) {
-        konamiCodeIterator++;
-        if (konamiCodeIterator === 11) {
+    console.log(konamiCodeCounter);
+    if (event.keyCode === konamiCode[konamiCodeCounter]) {
+        konamiCodeCounter++;
+        if (konamiCodeCounter === 11) {
             var audio = document.querySelector('#stageclearaudio');
             audio.play();
             div.css({
@@ -24,14 +24,15 @@ $(document).keyup(function (event) {
             });
         }
     } else {
-        konamiCodeIterator = 0;
+        konamiCodeCounter = 0;
     }
 })
+//REGULUS CODE EVENT
 $(document).keyup(function (event) {
-    console.log(regulusCodeIterator);
-    if (event.keyCode === regulusCode[regulusCodeIterator]) {
-        regulusCodeIterator++;
-        if (regulusCodeIterator === 7) {
+    console.log(regulusCodeCounter);
+    if (event.keyCode === regulusCode[regulusCodeCounter]) {
+        regulusCodeCounter++;
+        if (regulusCodeCounter === 7) {
             var audio = document.querySelector('#rickrollaudio');
             audio.play();
             div.css({
@@ -39,10 +40,12 @@ $(document).keyup(function (event) {
             })
         }
     } else {
-        regulusCodeIterator = 0;
+        regulusCodeCounter = 0;
     }
 })
 
+
+//BUTTON DISPLAY AND RESTART FUNCTION
 $(document).keyup(function (event) {
     var keyCode = event.keyCode
     switch (keyCode) {
