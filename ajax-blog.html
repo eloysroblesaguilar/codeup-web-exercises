@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="posts"></div>
+<script src="https://code.jquery.com/jquery-2.2.4.min.js"
+        integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+<script>
+    (function () {
+
+
+        $.get("/data/blog.json").done(function (data) {
+            console.log(data);
+            console.log(data[0].title);
+
+            $('#posts').html(renderBlog(data))
+
+            function renderBlog(data) {
+                var html = ''
+                for (var i = 0; i < data.length; i++) {
+                    html += renderData(data[i]);
+                }
+                return html;
+            }
+
+            function renderData(data) {
+                var html = '<div>'
+                html += '<h1>' + data.title + '</h1>';
+                html += '<p>' + data.content + '</p>';
+                html += '<p>' + data.categories + '</p>';
+                html += '<p>' + data.date + '</p>';
+                html += '</div>'
+                return html;
+            }
+
+        })
+    })();
+</script>
+</body>
+</html>
