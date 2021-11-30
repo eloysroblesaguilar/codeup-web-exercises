@@ -18,7 +18,7 @@
     </thead>
     <tbody id="insertProducts"></tbody>
 </table>
-
+<button id="btn">Refresh</button>
 <script src="https://code.jquery.com/jquery-2.2.4.min.js"
         integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
 
@@ -31,30 +31,39 @@
         //       HINT: Your data should come back as a JSON object; use console.log() to inspect
         //             its contents and fields
         //       HINT: You will want to target #insertProducts for your new HTML elements
-        $.get("/data/inventory.json").done(function (data) {
-            console.log(data);
-            console.log(data[0].title);
 
+
+        // This one gets the items on the page initially.
+        $.get("/data/inventory.json").done(function (data) {
             $('#insertProducts').html(renderInventory(data))
 
-            function renderInventory(data) {
-                var html = ''
-                for (var i = 0; i < data.length; i++) {
-                    html += renderData(data[i]);
-                }
-                return html;
-            }
-            function renderData(data){
-                var html = '<tr>'
-                html += '<td><p>' + data.title + '</p></td>';
-                html += '<td><p>' + data.quantity + '</p></td>';
-                html += '<td><p>' + data.price + '</p></td>';
-                html += '<td><p>' + data.categories + '</p></td>';
-                html += '</tr>'
-                return html;
-            }
+        })
+        //This reloads the table.
+        $('#btn').click(function (){
+            $.get("/data/inventory.json").done(function (data) {
+                $('#insertProducts').html(renderInventory(data))
+
+            })
         })
 
+
+        function renderInventory(data) {
+            var html = ''
+            for (var i = 0; i < data.length; i++) {
+                html += renderData(data[i]);
+            }
+            return html;
+        }
+
+        function renderData(data) {
+            var html = '<tr>'
+            html += '<td><p>' + data.title + '</p></td>';
+            html += '<td><p>' + data.quantity + '</p></td>';
+            html += '<td><p>' + data.price + '</p></td>';
+            html += '<td><p>' + data.categories + '</p></td>';
+            html += '</tr>'
+            return html;
+        }
     })();
 </script>
 

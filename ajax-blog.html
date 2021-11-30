@@ -17,26 +17,24 @@
             console.log(data[0].title);
 
             $('#posts').html(renderBlog(data))
-
-            function renderBlog(data) {
-                var html = ''
-                for (var i = 0; i < data.length; i++) {
-                    html += renderData(data[i]);
-                }
-                return html;
-            }
-
-            function renderData(data) {
-                var html = '<div>'
-                html += '<h1>' + data.title + '</h1>';
-                html += '<p>' + data.content + '</p>';
-                html += '<p>' + data.categories + '</p>';
-                html += '<p>' + data.date + '</p>';
-                html += '</div>'
-                return html;
-            }
-
         })
+        function renderBlog(data) {
+            var html = ''
+            for (var i = 0; i < data.length; i++) {
+                html += renderData(data[i]);
+            }
+            return html;
+        }
+
+        function renderData(data) {
+            var html = '<div>'
+            html += '<h1>' + data.title + '</h1>';
+            html += '<p>' + data.content + '</p>';
+            html += '<p>' + data.categories.join('  ') + '</p>';
+            html += '<p>' + data.date + '</p>';
+            html += '</div>'
+            return html;
+        }
     })();
 </script>
 </body>
