@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>MARIO FAQ</title>
+    <style>
+        #mariofaqs {
+            width: 75%;
+        }
+        #mario {
+            background-image: url("/img/MarioNSMBUDeluxe.png");
+            width: 250px;
+            height: 250px;
+            float: right;
+        }
+
+        dt {
+            font-weight: bold;
+
+        }
+
+        * {
+            font-family: "JetBrains Mono", sans-serif;
+        }
+
+        .invisible {
+            visibility: hidden;
+        }
+    </style>
+</head>
+<body>
+<div id="mario"></div>
+<div id="mariofaqs">
+    <h1>MARIO FAQS</h1>
+    <dl>
+
+        <dt>Who created Mario?</dt>
+        <dd class="invisible">Shigeru Miyamoto</dd>
+
+        <dt>When was Mario created?</dt>
+        <dd class="invisible">Mario debuted as Jumpman in Donkey Kong in 1981</dd>
+
+        <dt>What was Mario's original occupation?</dt>
+        <dd class="invisible">Mario was originally a carpenter, not a plumber. He has also appeared as a Doctor.</dd>
+
+
+        <dt>Where does Super Mario Bros fall in terms of Nintendo sales?</dt>
+        <dd class="invisible">The original Super Mario Bros is actually second in sales to Wii Sports.</dd>
+
+        <dt>How many games has Mario appeared in?</dt>
+        <dd class="invisible">Mario has appeared in over 200 games.</dd>
+
+        <dt>Who composed the soundtrack to Super Mario Bros?</dt>
+        <dd class="invisible">Koji Kondo composed the soundtrack. The main theme topped billboard ringtone charts for 125 weeks.</dd>
+
+        <dt>Has Mario ever appeared as an antagonist?</dt>
+        <dd class="invisible">Mario stars as the antagonist in the 1982 sequel to Donkey Kong, Donkey Kong Jr.</dd>
+
+        <dt>What was the first sports game Mario was in?</dt>
+        <dd class="invisible">Mario made his first appearance in a sports game in the 1991 NES game, NES Open Tournament Golf.</dd>
+
+        <dt>What inspired Mario's design?</dt>
+        <dd class="invisible">His looks are dictated by the graphical limitations of the 1980s. His mustache and overalls serve as ways to help the player see otherwise indistinguishable features.</dd>
+
+        <dt>Who voices Mario?</dt>
+        <dd class="invisible">Mario has been voiced by Charles Martinet since 1995. He will be voiced by Chris Pratt in the 2022 Untitled Mario film.</dd>
+
+    </dl>
+<button id="toggle">Toggle Answers</button>
+    <br>
+
+    <h3>YOSHI FACTS</h3>
+    <ul id="yoshifacts">
+        <li>HE IS A COOL DINOSAUR</li>
+        <li>HE IS GREEN</li>
+        <li>HE LAYS EGGS</li>
+        <li>HE MAKES COOL NOISES</li>
+    </ul>
+    <h3>LUIGI FACTS</h3>
+    <ul id="luigifacts">
+        <li>HE IS MARIO'S YOUNGER FRATERNAL TWIN BROTHER</li>
+        <li>HE HAS HIS OWN GAME CALLED LUIGI'S MANSION</li>
+        <li>HE WEARS GREEN INSTEAD OF RED</li>
+        <li>HE FIRST APPEARED IN THE 1983 GAME & WATCH GAME MARIO BROS</li>
+    </ul>
+    <h3>PRINCESS PEACH FACTS</h3>
+    <ul id="peachfacts">
+        <li>SHE IS USUALLY THE DAMSEL IN DISTRESS/li>
+        <li>SHE STARS AS THE HERO IN THE 2005 NINTENDO DS GAME SUPER PRINCESS PEACH</li>
+        <li>SHE HAS AN AFFINITY FOR THE COLOR PINK</li>
+        <li>SHE IS PRINCESS OF THE MUSHROOM KINGDOM</li>
+    </ul>
+    <button id="coolbackground">COOL BACKGROUND</button>
+</div>
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+<script>
+    $(document).ready(function () {
+
+        console.log('hello')
+    $("#toggle").click(function (e){
+        $('dd').toggleClass('invisible')
+    })
+    })
+    $('#coolbackground').click(function (e){
+        $("#peachfacts").children().last().css('background-color', 'yellow');
+        $("#yoshifacts").children().last().css('background-color', 'yellow');
+        $("#luigifacts").children().last().css('background-color', 'yellow');
+    })
+    $('h3').click(function (e){
+        $(this).next().css('font-weight', 'bold');
+    })
+    $('li').click(function (e){
+        $(this).parent().children().first().css('color', 'blue')
+    })
+</script>
+</body>
+</html>
