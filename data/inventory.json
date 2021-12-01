@@ -4,8 +4,7 @@
         "quantity": 25,
         "categories": [
             "tool"
-        ],
-        "price": 20
+        ]
     }, {
         "title": "Drill",
         "quantity": 5,
