@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.css' rel='stylesheet'/>
+</head>
+<body>
+<div id='map' style='width: 800px; height: 600px;'></div>
+
+<script src="js/keys.js"></script>
+<script>
+    mapboxgl.accessToken = MAPBOX_KEY;
+
+    const map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/satellite-streets-v11',
+        center: [-74.037958, 40.688499],
+        zoom: 11
+    })
+    //
+    const marker = new mapboxgl.Marker({
+        color: 'blue',
+        draggable: 'true'
+    })
+    .setLngLat([-74.044324, 40.689257])
+    .addTo(map)
+    //
+    const popup = new mapboxgl.Popup()
+    .setLngLat(marker.getLngLat())
+    .setHTML('<p>Statue of Liberty</p>')
+    .addTo(map)
+    //
+    marker.on('dragend', function (){
+        popup.setHTML(marker.getLngLat())
+        .setLngLat(marker.getLngLat())
+    })
+</script>
+</body>
+</html>
