@@ -48,6 +48,31 @@ $(document).ready(function () {
         console.log('hello?')
     });// END OF MY MARKER DRAG END FUNCTION
 
+    // SEARCH BUTTON FUNCTIONALITY
+    $("#searchbtn").click(function () {
+        $('#forecasts').empty()
+        geocode($('#searchedcity').val(), MAPBOX_KEY).then(function (results) {
+            console.log(results);
+            marker.setLngLat(results);
+            $.get("https://api.openweathermap.org/data/2.5/onecall", {
+                APPID: OPEN_WEATHER_KEY,
+                lat: results[1],
+                lon: results[0],
+                exclude: "hourly",
+                units: "imperial",
+            }).done(function (data) {
+                updateCards(data);
+            });
+
+            map.flyTo({
+                center: results,
+                zoom: 12,
+                speed: 1.2,
+                curve: 1
+            })
+        })
+    })
+
 
     function updateCards(data) {
         console.log(data)
@@ -67,6 +92,10 @@ $(document).ready(function () {
             let temp = document.createElement("div");
             let tempText = document.createTextNode(data.daily[i].temp.min + ' / ' + data.daily[i].temp.max);
             temp.appendChild(tempText);
+            //ICON
+            let img = document.createElement("img")
+            img.src = "http://openweathermap.org/img/w/" + data.daily[i].weather[0].icon+".png"
+
             //DESCRIPTION
             let description = document.createElement("div");
             let descriptionText = document.createTextNode("Description: " + data.daily[i].weather[0].description);
@@ -86,6 +115,7 @@ $(document).ready(function () {
             //ADDING EVERYTHING TO THE CARD
             forecastCard.appendChild(date);
             forecastCard.appendChild(temp);
+            forecastCard.appendChild(img);
             forecastCard.appendChild(description);
             forecastCard.appendChild(humidity);
             forecastCard.appendChild(wind);
@@ -94,4 +124,5 @@ $(document).ready(function () {
             $('#forecasts').append(forecastCard);
         } // END OF MY FOR LOOP
     } //END OF FUNCTION
+
 })// END OF MY DOCUMENT READY FUNCTION
