@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+          integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.css' rel='stylesheet'/>
+    <script src="js/mapbox-geocoder-utils.js"></script>
+</head>
+<body>
+<div id="forecasts" class="card">
+
+    <div class="card" style="width: 20%;">
+        <div class="card-header"></div>
+        <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <hr>
+            <p></p>
+            <hr>
+            <p></p>
+            <hr>
+            <p></p>
+            <hr>
+        </div>
+    </div>
+
+
+</div>
+<script src="js/keys.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+        crossorigin="anonymous"></script>
+
+<script src="https://code.jquery.com/jquery-2.2.4.min.js"
+        integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+<script>
+    $.get("https://api.openweathermap.org/data/2.5/onecall?lat=29&lon=-95&exclude={part}&appid=" + OPEN_WEATHER_KEY).done(function (data) {
+        console.log(data)
+    })
+
+    $.get("https://api.openweathermap.org/data/2.5/onecall", {
+        lat: 0,
+        lon: 0,
+        exclude: "hourly",
+        units: "imperial",
+        APPID: OPEN_WEATHER_KEY
+    }).done(function (data) {
+        let i = 0;
+        data.daily.forEach(function (data) {
+
+            const para = document.createElement("div");
+            const node = document.createTextNode(data.daily);
+            para.appendChild(node);
+
+            const forecasts = $('#forecasts');
+            forecasts.append(para);
+            i++;
+        })
+    })
+</script>
+</body>
+</html>

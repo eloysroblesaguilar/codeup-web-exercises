@@ -2,9 +2,134 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Map</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+          integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.css' rel='stylesheet'/>
+    <script src="js/mapbox-geocoder-utils.js"></script>
 </head>
 <body>
+<div id='map' style='width: 100%; height: 600px;'></div>
+<div>
+    <button id="5x">5X</button>
+    <button id="10x">10X</button>
+    <button id="15x">15X</button>
+    <button id="20x">20X</button>
+</div>
 
 </body>
+<script src="js/keys.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+        crossorigin="anonymous"></script>
+
+<script src="https://code.jquery.com/jquery-2.2.4.min.js"
+        integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+<script>
+    mapboxgl.accessToken = MAPBOX_KEY;
+
+
+    // MAP
+    const map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/satellite-streets-v11', // style URL
+        zoom: 12
+    });
+    geocode('Chris Madrids, San Antonio, TX', MAPBOX_KEY).then(function (results) {
+        map.setCenter(results)
+    });
+
+
+    //ZOOM BuTTONS
+    $('#5x').click(function () {
+        map.setZoom(5);
+    });
+    // document.getElementById('10x').addEventListener('click',function ())
+    $('#10x').click(function () {
+        map.setZoom(10);
+    });
+
+    $('#15x').click(function () {
+        map.setZoom(15);
+    });
+
+    $('#20x').click(function () {
+        map.setZoom(20);
+    });
+
+    //OOGA BOOGA
+
+    //MARKER - CHRIS MADRIDS
+    // const CMmarker = new mapboxgl.Marker();
+    // geocode('Chris Madrids, San Antonio, TX', MAPBOX_KEY).then(function (results) {
+    //     CMmarker.setLngLat(results)
+    //     .setPopup(new mapboxgl.Popup()
+    //         .setHTML("<h1>Chris Madrid's</h1><p>Local institution with signature burgers & buns, nachos, chalupas, beer, margaritas & Tex-Mex decor.</p>"))
+    //     .addTo(map);
+    //     // marker.togglePopup(); // toggle popup open or closed
+    //
+    // });
+    //
+    // // MARKER - VIOLAS VENTANAS
+    // const VVmarker = new mapboxgl.Marker();
+    //     VVmarker.setLngLat([-98.674349, 29.469287])
+    //     .setPopup(new mapboxgl.Popup()
+    //         .setHTML("<h1>Viola's Ventanas</h1><p>Spacious, airy eatery serving upscale Mexican cuisine in an old-world setting with outdoor seating.</p>"))
+    //     .addTo(map);
+    //
+    // // MARKER - LA PANADERIA
+    // const LPmarker = new mapboxgl.Marker();
+    // LPmarker.setLngLat([-98.5214983,29.4365156])
+    // .setPopup(new mapboxgl.Popup()
+    //     .setHTML("<h1>La Panadería Bakery Café</h1><p>Specialty bakery focusing on long-fermented Latin American breads, plus coffee & other light fare.</p>"))
+    // .addTo(map);
+    //
+
+    USING ARRAYS WOOOOO
+
+    const restaurants = [
+        {
+            name: "Chris Madrid's",
+            address: [-98.507691, 29.464236],
+            description: 'Local institution with signature burgers & buns, nachos, chalupas, beer, margaritas & Tex-Mex decor.'
+        }, {
+            name: "Viola's Ventanas",
+            address: [-98.674043, 29.469481],
+            description: 'Spacious, airy eatery serving upscale Mexican cuisine in an old-world setting with outdoor seating.'
+        }, {
+            name: "La Panaderia Bakery Café",
+            address: [-98.4899451173611, 29.426776],
+            description: "Specialty bakery focusing on long-fermented Latin American breads, plus coffee & other light fare."
+        }, {
+            name: "Osaka Japanese and Chinese Restaurant",
+            address: [-66.083219, 18.455802],
+            description: "This local restaurant was the setting to some great moments that I was fortunate enough to share with the people I love most. "
+        }
+    ];
+
+    console.log(restaurants[0].name);
+    console.log(restaurants[1].name);
+    console.log(restaurants[2].name);
+    console.log(restaurants[1].address);
+
+
+    restaurants.forEach(function (restaurant) {
+
+        let popup = new mapboxgl.Popup({offset: 25}).setHTML(
+            "<h1>" + restaurant.name + "</h1><p class='lead'>" + restaurant.description + "</p>"
+        )
+
+        new mapboxgl.Marker()
+            .setLngLat(restaurant.address)
+            .setPopup(popup)
+            .addTo(map);
+
+    })
+
+
+</script>
 </html>
