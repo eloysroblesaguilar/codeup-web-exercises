@@ -12,19 +12,19 @@
 <body>
 <div id="forecasts" class="card">
 
-    <div class="card" style="width: 20%;">
-        <div class="card-header"></div>
-        <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <hr>
-            <p></p>
-            <hr>
-            <p></p>
-            <hr>
-            <p></p>
-            <hr>
-        </div>
-    </div>
+<!--    <div class="card" style="width: 20%;">-->
+<!--        <div class="card-header"></div>-->
+<!--        <div class="card-body">-->
+<!--            <h5 class="card-title">Card title</h5>-->
+<!--            <hr>-->
+<!--            <p></p>-->
+<!--            <hr>-->
+<!--            <p></p>-->
+<!--            <hr>-->
+<!--            <p></p>-->
+<!--            <hr>-->
+<!--        </div>-->
+<!--    </div>-->
 
 
 </div>
@@ -39,29 +39,53 @@
 <script src="https://code.jquery.com/jquery-2.2.4.min.js"
         integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
 <script>
-    $.get("https://api.openweathermap.org/data/2.5/onecall?lat=29&lon=-95&exclude={part}&appid=" + OPEN_WEATHER_KEY).done(function (data) {
-        console.log(data)
-    })
 
     $.get("https://api.openweathermap.org/data/2.5/onecall", {
-        lat: 0,
-        lon: 0,
+        APPID: OPEN_WEATHER_KEY,
+        lat: 29.4241,
+        lon: -98.4936,
         exclude: "hourly",
         units: "imperial",
-        APPID: OPEN_WEATHER_KEY
     }).done(function (data) {
-        let i = 0;
-        data.daily.forEach(function (data) {
 
-            const para = document.createElement("div");
-            const node = document.createTextNode(data.daily);
-            para.appendChild(node);
+        console.log(data)
+        for (i = 0; i < 5; i++) {
+
+            let forecastCard = document.createElement("div");
+            forecastCard.className= "card w-25"
+
+            let date = document.createElement("div");
+            let dateText = document.createTextNode(new Date(data.daily[i].dt * 1000));
+            date.className = "card-header"
+            date.appendChild(dateText);
+
+
+            let temp = document.createElement("div");
+            let tempText = document.createTextNode(data.daily[i].temp.min + ' / ' + data.daily[i].temp.max);
+            temp.appendChild(tempText);
+
+            let description = document.createElement("div");
+            let descriptionText = document.createTextNode("Description: " + data.daily[i].weather[0].description);
+            description.appendChild(descriptionText);
+
+            let humidity = document.createElement("div");
+            let humidityText = document.createTextNode("Humidity: " + data.daily[i].humidity + "%")
+            humidity.appendChild(humidityText)
+
+            let
+
+            forecastCard.appendChild(date);
+            forecastCard.appendChild(temp);
+            forecastCard.appendChild(description);
+            forecastCard.appendChild(humidity);
 
             const forecasts = $('#forecasts');
-            forecasts.append(para);
-            i++;
-        })
-    })
+            forecasts.append(forecastCard);
+
+        }
+
+
+    });
 </script>
 </body>
 </html>
