@@ -98,9 +98,9 @@ $(document).ready(function () {
 
             let forecastCard = document.createElement("div");
             if (map.getStyle().name === "Mapbox Light") {
-                forecastCard.className = "card m-3 text-center";
+                forecastCard.className = "card m-2 p-0 text-center";
             } else if (map.getStyle().name === "Mapbox Dark") {
-                forecastCard.className = "background-dark card m-2 text-center text-light";
+                forecastCard.className = "background-dark card m-2 p-0 text-center text-light";
             }
             // forecastCard.className = "card m-2 text-center";
             forecastCard.style.width = "18.5%";
