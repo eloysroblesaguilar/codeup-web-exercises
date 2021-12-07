@@ -36,6 +36,8 @@ $(document).ready(function () {
         // OPEN WEATHER FORECAST CARDS
         let lnglat = marker.getLngLat()
         console.log(lnglat)
+        map.setZoom(12);
+        map.setCenter(marker.getLngLat())
         $.get("https://api.openweathermap.org/data/2.5/onecall", {
             APPID: OPEN_WEATHER_KEY,
             lat: lnglat.lat,
@@ -77,6 +79,8 @@ $(document).ready(function () {
 
     $("#darkmode").click(function () {
         $('.card').toggleClass('background-dark text-light')
+        $('body').toggleClass('background-dark')
+        $('#searchedcity').toggleClass('background-dark')
 // console.log(map.getStyle().name)
         if (map.getStyle().name === "Mapbox Light") {
             map.setStyle('mapbox://styles/mapbox/dark-v10')
@@ -93,7 +97,7 @@ $(document).ready(function () {
 
             let forecastCard = document.createElement("div");
             if (map.getStyle().name === "Mapbox Light") {
-                forecastCard.className = "card m-2 text-center";
+                forecastCard.className = "card m-3 text-center";
             } else if (map.getStyle().name === "Mapbox Dark") {
                 forecastCard.className = "background-dark card m-2 text-center text-light";
             }
@@ -116,48 +120,49 @@ $(document).ready(function () {
 
             switch (imgcode) {
                 case "01d":
-                    img.className = "fas fa-sun fa-3x";
+                    img.className = "fas fa-sun fa-3x m-3";
                     break;
                 case "01n":
-                    img.className = "fas fa-sun fa-3x";
+                    img.className = "fas fa-sun fa-3x m-3";
                     break;
                 case "02d":
-                    img.className = "fas fa-cloud-sun fa-3x";
+                    img.className = "fas fa-cloud-sun fa-3x m-3";
                     break;
                 case "02n":
-                    img.className = "fas fa-cloud-moon fa-3x";
+                    img.className = "fas fa-cloud-moon fa-3x m-3";
                     break;
                 case "03d":
                 case "03n":
-                    img.className = "fas fa-cloud fa-3x";
+                    img.className = "fas fa-cloud fa-3x m-3";
                     break;
                 case "04d":
                 case "04n":
-                    img.className = "fas fa-cloud-meatball fa-3x";
+                    img.className = "fas fa-cloud-meatball fa-3x m-3";
                     break;
                 case "09d":
                 case "09n":
-                    img.className = "fas fa-cloud-showers-heavy fa-3x";
+                    img.className = "fas fa-cloud-showers-heavy fa-3x m-3";
                     break;
                 case "10d":
-                    img.className = "fas fa-cloud-sun-rain fa-3x";
+                    img.className = "fas fa-cloud-sun-rain fa-3x m-3";
                     break;
                 case "10n":
-                    img.className = "fas fa-cloud-moon-rain fa-3x";
+                    img.className = "fas fa-cloud-moon-rain fa-3x m-3";
                     break;
                 case "11d":
                 case "11n":
-                    img.className = "fas fa-poo-storm fa-3x";
+                    img.className = "fas fa-poo-storm fa-3x m-3";
                     break;
                 case "13d":
                 case "13n":
-                    img.className = "fas fa-snowflake fa-3x";
+                    img.className = "fas fa-snowflake fa-3x m-3";
                     break;
                 case "50d":
                 case "50n":
-                    img.className = "fas fa-smog fa-3x";
+                    img.className = "fas fa-smog fa-3x m-3";
                     break;
             }
+
 
             //DESCRIPTION
             let description = document.createElement("div");
