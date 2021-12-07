@@ -78,6 +78,7 @@ $(document).ready(function () {
     //DARK MODE
 
     $("#darkmode").click(function () {
+        console.log('hello');
         $('.card').toggleClass('background-dark text-light')
         $('body').toggleClass('background-dark')
         $('#searchedcity').toggleClass('background-dark')
