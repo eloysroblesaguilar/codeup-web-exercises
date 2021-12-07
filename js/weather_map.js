@@ -36,8 +36,12 @@ $(document).ready(function () {
         // OPEN WEATHER FORECAST CARDS
         let lnglat = marker.getLngLat()
         console.log(lnglat)
-        map.setZoom(12);
-        map.setCenter(marker.getLngLat())
+        map.flyTo({
+            center: lnglat,
+            zoom: 12,
+            speed: 1.2,
+            curve: 1
+        })
         $.get("https://api.openweathermap.org/data/2.5/onecall", {
             APPID: OPEN_WEATHER_KEY,
             lat: lnglat.lat,
