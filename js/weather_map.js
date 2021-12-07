@@ -73,13 +73,31 @@ $(document).ready(function () {
         })
     })
 
+    //DARK MODE
+
+    $("#darkmode").click(function () {
+        $('.card').toggleClass('background-dark text-light')
+// console.log(map.getStyle().name)
+        if (map.getStyle().name === "Mapbox Light") {
+            map.setStyle('mapbox://styles/mapbox/dark-v10')
+        } else if (map.getStyle().name === "Mapbox Dark") {
+            map.setStyle('mapbox://styles/mapbox/light-v10')
+        }
+    })
+
 
     function updateCards(data) {
         console.log(data)
         for (i = 0; i < 5; i++) {
             // EACH CARD
+
             let forecastCard = document.createElement("div");
-            forecastCard.className = "card m-2 text-center";
+            if (map.getStyle().name === "Mapbox Light") {
+                forecastCard.className = "card m-2 text-center";
+            } else if (map.getStyle().name === "Mapbox Dark") {
+                forecastCard.className = "background-dark card m-2 text-center text-light";
+            }
+            // forecastCard.className = "card m-2 text-center";
             forecastCard.style.width = "18.5%";
             forecastCard.style.float = "left";
             // DATE
@@ -93,8 +111,53 @@ $(document).ready(function () {
             let tempText = document.createTextNode(data.daily[i].temp.min + ' / ' + data.daily[i].temp.max);
             temp.appendChild(tempText);
             //ICON
-            let img = document.createElement("img")
-            img.src = "http://openweathermap.org/img/w/" + data.daily[i].weather[0].icon+".png"
+            let img = document.createElement("i")
+            let imgcode = data.daily[i].weather[0].icon
+
+            switch (imgcode) {
+                case "01d":
+                    img.className = "fas fa-sun fa-3x";
+                    break;
+                case "01n":
+                    img.className = "fas fa-sun fa-3x";
+                    break;
+                case "02d":
+                    img.className = "fas fa-cloud-sun fa-3x";
+                    break;
+                case "02n":
+                    img.className = "fas fa-cloud-moon fa-3x";
+                    break;
+                case "03d":
+                case "03n":
+                    img.className = "fas fa-cloud fa-3x";
+                    break;
+                case "04d":
+                case "04n":
+                    img.className = "fas fa-cloud-meatball fa-3x";
+                    break;
+                case "09d":
+                case "09n":
+                    img.className = "fas fa-cloud-showers-heavy fa-3x";
+                    break;
+                case "10d":
+                    img.className = "fas fa-cloud-sun-rain fa-3x";
+                    break;
+                case "10n":
+                    img.className = "fas fa-cloud-moon-rain fa-3x";
+                    break;
+                case "11d":
+                case "11n":
+                    img.className = "fas fa-poo-storm fa-3x";
+                    break;
+                case "13d":
+                case "13n":
+                    img.className = "fas fa-snowflake fa-3x";
+                    break;
+                case "50d":
+                case "50n":
+                    img.className = "fas fa-smog fa-3x";
+                    break;
+            }
 
             //DESCRIPTION
             let description = document.createElement("div");
