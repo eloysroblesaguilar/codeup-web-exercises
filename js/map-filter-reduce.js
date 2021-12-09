@@ -48,7 +48,9 @@ console.log(emails);
 let total = users.reduce((total , user) =>{
     return total + user.yearsOfExperience
 },0);
+let average = total / users.length;
 console.log(total);
+console.log( average);
 // Use .reduce to get the longest email from the list of users.
 let longestEmail = users.reduce((email, user) => {
     if(email.length < user.email.length) {
@@ -63,3 +65,4 @@ console.log(longestEmail);
 let intro = users.map(user => user.name).reduce((previousValue, currentValue) =>   previousValue + " " + currentValue + ","
         , 'Your instructors are: ')
 console.log(intro);
+
